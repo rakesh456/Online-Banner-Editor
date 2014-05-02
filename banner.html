@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- Online Banner Editor -->
+<html>
+<head>
+<title>Online Banner Editor</title>
+<script src="getScrollOffsets.js" type="text/javascript"></script>
+<script src="drag.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var zIndex = 0;
+function doClick() {
+	var el = document.getElementById("fileElem");
+	if (el) {
+      el.click();
+   }
+}
+function draw(files){
+	var img = document.createElement("img");	
+	zIndex += 100;
+    img.id ="img1";
+    img.onload = function() {
+    	window.URL.revokeObjectURL(this.src);      	
+      	img.style.position 	= "relative";
+      	img.style.zIndex = zIndex;
+      	img.style.left = "0px";
+      	img.style.top = "0px";
+      	img.addEventListener("mousedown", function() { drag(this, event);}, false);
+      	var bannerEdit = document.getElementById('banner-edit');
+        bannerEdit.appendChild(img);        
+        }         
+    img.src = window.URL.createObjectURL(files[0]);         
+}
+function addText(){
+	var text = prompt("Add Text");    	  
+    var ctx = document.getElementById('banner').getContext('2d');
+    var bannerEdit = document.getElementById('banner-edit');
+    var p = document.createElement("p");
+    p.innerHTML = text;
+    p.style.position 	= "relative";    
+    //p.contenteditable = true;
+  	p.addEventListener("mousedown", function() { drag(this, event);}, false);    
+    bannerEdit.appendChild(p);   
+}
+</script>    
+<style type="text/css">
+      canvas { 
+      border: 1px solid grey; 
+      display: none;
+      }      
+</style>
+</head>
+<body>
+<canvas id="banner" width="650" height="185"></canvas><br>
+<div id="banner-edit" style="width:650px; height:185px; border: 1px solid grey; overflow: hidden;">
+</div>
+<form>
+<input type="file" id="fileElem" accept="image/*" onchange= "draw(this.files);" style="display:none" ><br>
+<input type="button" value="Add Text" onclick = "addText();">
+<input type="button" onclick="doClick()" value="Add Image">
+</form>
+</body>
+</html>
