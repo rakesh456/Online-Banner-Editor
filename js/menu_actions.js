@@ -1408,15 +1408,15 @@ function MENU_CLASS(){
 		var tempCtx = tempCanvas.getContext("2d");
 		tempCanvas.width = WIDTH;
 		tempCanvas.height = HEIGHT;
+		if (document.getElementById('img1')) {
+	    	var img = document.getElementById('img1');
+	    	tempCtx.drawImage(img, img.offsetLeft - 8, img.offsetTop - 8);
+	    }
 		if (document.getElementById('text1')) {
 	    	var text = document.getElementById('text1');      	
 	    	tempCtx.font = "12pt Times New Roman";
 	    	tempCtx.fillText(text.innerHTML, text.offsetLeft - 8, text.offsetTop + 5);	
-	    }    
-	    if (document.getElementById('img1')) {
-	    	var img = document.getElementById('img1');
-	    	tempCtx.drawImage(img, img.offsetLeft - 8, img.offsetTop - 8);
-	    }
+	    }	    
 		if(MAIN.TRANSPARENCY == false){
 			tempCtx.beginPath();
 			tempCtx.rect(0, 0, WIDTH, HEIGHT);

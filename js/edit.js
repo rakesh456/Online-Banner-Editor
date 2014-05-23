@@ -9,6 +9,7 @@ function draw(files){
       	img.style.zIndex = zIndex;
       	img.style.left = "0px";
       	img.style.top = "0px";
+      	img.style.border = "1px dashed gray";
       	img.addEventListener("mousedown", function() { drag(this, event);}, false);
       	var bannerEdit = document.getElementById('banner-edit');
       	var download = document.getElementById('download');
@@ -22,12 +23,23 @@ function addText(){
     var bannerEdit = document.getElementById('banner-edit');
     var p = document.createElement("p");
     var download = document.getElementById('download');
+    var imgHeight = 0;
     p.id = "text1";
     zIndex += 1;
     p.innerHTML = text;
     p.style.position 	= "relative";
     p.style.zIndex = zIndex;
-  	p.addEventListener("mousedown", function() { drag(this, event);}, false);    
+    p.style.border = "1px dashed gray";
+    p.style.margin = "0 0 0 0";
+    p.style.left = "0px";   
+    
+    if (document.getElementById('img1')){
+    	imgHeight = document.getElementById('img1').height;
+    	p.style.top = "-" + imgHeight + "px";
+    }  	
+    else
+    	p.style.top = "0px";  	
+  	p.addEventListener("mousedown", function() { drag(this, event, imgHeight);}, false);    
     bannerEdit.appendChild(p);   
     download.disabled = false;
 }

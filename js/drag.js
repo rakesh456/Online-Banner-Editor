@@ -14,8 +14,9 @@
  *  
  *  Based on code by David Flanagan in his book JavaScript The Definitive Guide Sixth Edition, Example 17-2
  **/
-function drag(elementToDrag, event) {
+function drag(elementToDrag, event, correction) {
 	// The initial mouse position, converted to document coordinates
+	var correction = correction | 0;
 	var scroll = getScrollOffsets();		// A utility function from elsewhere
 	var startX = event.clientX + scroll.x;
 	var startY = event.clientY + scroll.y;
@@ -27,7 +28,7 @@ function drag(elementToDrag, event) {
 	
 	// Compute the distance between the mouse down event and the upper-left corner of the element. We'll maintain this distance as the mouse moves.
 	var deltaX = startX - origX;
-	var deltaY = startY - origY;
+	var deltaY = startY - origY + correction;
 	
 	elementToDrag.style.border = "1px dashed gray";
 	// Register the event handlers that will respond to the mousemove events

@@ -1,7 +1,7 @@
 // Return the current scrollbar offsets as the x and y properties of an object
 // Author: David Flanagan in his book JavaScript The Definitive Guide Sixth Edition, Example 15-8
 function getScrollOffsets(w) {
-	// Use the specifies window or the current window if no argument
+	// Use the specified window or the current window if no argument
 	w = w || window;
 	
 	// This works for all browsers except IE versions 8 and before
