@@ -1,42 +1,25 @@
 <!DOCTYPE html>
-<!-- Online Banner Editor -->
 <html>
 <head>
 <title>Online Banner Editor</title>
 <link rel="stylesheet" type="text/css" href="styles/styles.css" />
 <link rel="stylesheet" type="text/css" media="print" href="styles/print.css" />
-<script type="text/javascript">
-function doClick() {
-	var el = document.getElementById("fileElem");
-	if (el) el.click();   
-}
-</script>    
-<style type="text/css">
-      canvas { 
-      border: 1px solid grey; 
-      display: block;
-      }      
-</style>
-</head>
-<body>
-
-<div id="banner-edit" style="width:650px; height:185px; border: 1px solid grey; overflow: hidden;">
-</div>
-<div id="popup" style="z-index:100;"></div>
-<form>
-<input type="file" id="fileElem" accept="image/*" onchange= "draw(this.files);" style="display:none" ><br>
-<input type="button" value="Add Text" onclick = "addText();">
-<input type="button" onclick="doClick()" value="Add Image">
-<input type="button" id="download" onclick="MENU.do_menu(['file_save']);" value="Download" disabled>
-</form><br>
-<div style="display:none;" id="tmp"></div>
 <script src="libs/jquery-1.8.3.js"></script>
 <script src="js/getScrollOffsets.js" type="text/javascript"></script>
 <script src="js/drag.js" type="text/javascript"></script>
 <script src="js/edit.js" type="text/javascript"></script>
-<script src="js/helpers.js"></script>
-<script src="js/popup.js"></script>
-<script src="js/menu_actions.js"></script>
-<script src="js/settings.js"></script>
+</head>
+<body>
+<div id="banner-edit" style="width:650px; height:185px; border: 1px solid grey; overflow: hidden;">
+</div>
+<form>
+<input type="file" id="fileElem" accept="image/*" onchange= "draw(this.files);" style="display:none" ><br>
+<input type="button" value="Add Text" onclick = "addText();">
+<input type="button" onclick="doClick()" value="Add Image">
+<input type="button" id="download" onclick="downloadBanner();" value="Download" disabled>
+</form><br>
+<canvas id="banner" width="650" height="185" style="display:none;"></canvas>
+<div style="display:none;" id="tmp">
+</div>
 </body>
 </html>

@@ -1,4 +1,8 @@
 var zIndex = 0;
+function doClick() {
+	var el = document.getElementById("fileElem");
+	if (el) el.click();   
+}
 function draw(files){
 	var img = document.createElement("img");	
 	zIndex += 1;
@@ -43,7 +47,7 @@ function addText(){
     bannerEdit.appendChild(p);   
     download.disabled = false;
 }
-function download(){
+function downloadBanner(){	
 	var canvas = document.getElementById('banner');
     var ctx = canvas.getContext('2d');
     var img = document.getElementById('img1');
@@ -57,7 +61,7 @@ function download(){
     }
     var data = canvas.toDataURL("image/png");
 	var data_header = "image/png";
-	var fname = "file.png";
+	var fname = "banner.png";
 	//push data to user
 	window.URL = window.webkitURL || window.URL;
 	var a = document.createElement('a');
@@ -67,12 +71,14 @@ function download(){
 		a.download = fname;
 		a.href = data;
 		a.textContent = 'Downloading...';
-		document.getElementById("tmp").appendChild(a);
-		
-		//release memory
-		//a.onclick = function(e){
-		//	MENU.save_cleanup(this);
-		//	};
+		document.getElementById("tmp").appendChild(a);		
+		//release memory		
+		setTimeout(function(){
+			a.textContent = 'Downloaded';
+			a.href = '';
+			var element = document.getElementById("save_data");
+			element.parentNode.removeChild(element);
+			}, 1500);
 		//force click
 		document.querySelector('#save_data').click();
 		}
