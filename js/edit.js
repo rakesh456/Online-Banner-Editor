@@ -5,6 +5,7 @@ function doClick() {
 }
 function draw(files){
 	var img = document.createElement("img");	
+	var btnAddImage = document.getElementById('btnAddImage');
 	zIndex += 1;
     img.id ="img1";
     img.onload = function() {
@@ -19,14 +20,17 @@ function draw(files){
       	var download = document.getElementById('download');
         bannerEdit.appendChild(img);
         download.disabled = false;
+        btnAddImage.disabled = true;
         }         
     img.src = window.URL.createObjectURL(files[0]);         
 }
 function addText(){
 	var text = prompt("Add Text");
+	if (!text) return;
     var bannerEdit = document.getElementById('banner-edit');
     var p = document.createElement("p");
     var download = document.getElementById('download');
+    var btnAddText = document.getElementById('btnAddText');
     var imgHeight = 0;
     p.id = "text1";
     zIndex += 1;
@@ -46,6 +50,7 @@ function addText(){
   	p.addEventListener("mousedown", function() { drag(this, event, imgHeight);}, false);    
     bannerEdit.appendChild(p);   
     download.disabled = false;
+    btnAddText.disabled = true;
 }
 function downloadBanner(){	
 	var canvas = document.getElementById('banner');

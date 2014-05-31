@@ -14,10 +14,10 @@
 </div>
 <form>
 <input type="file" id="fileElem" accept="image/*" onchange= "draw(this.files);" style="display:none" ><br>
-<input type="button" value="Add Text" onclick = "addText();">
-<input type="button" onclick="doClick()" value="Add Image">
+<input type="button" id="btnAddText" value="Add Text" onclick = "addText();">
+<input type="button" id = "btnAddImage" onclick="doClick()" value="Add Image">
 <input type="button" id="download" onclick="downloadBanner();" value="Download" disabled>
-</form><br>
+</form>
 <canvas id="banner" width="650" height="185" style="display:none;"></canvas>
 <div style="display:none;" id="tmp">
 </div>
