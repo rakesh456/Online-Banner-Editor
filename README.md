@@ -6,3 +6,4 @@ A small prototype of an online banner editor. You can add a text string, move ar
 
 Demo: http://bitly.com/online-banner
 
+You will need to host the code on a web server for it to function properly, esp the download functionality.
